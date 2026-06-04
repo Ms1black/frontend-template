@@ -1,0 +1,43 @@
+# Dependencies
+node_modules
+
+# Next.js
+.next
+next-env.d.ts
+
+# Build
+dist
+out
+storybook-static
+
+# Tests
+coverage
+playwright-report
+test-results
+blob-report
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode
+.idea
+*.swp
+*.swo
+
+# Tooling
+.claude
+.swc
