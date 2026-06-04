@@ -2,7 +2,10 @@
 
 Next.js 15 · TypeScript 5 · Feature-Sliced Design · pnpm
 
+
 ## Стек
+
+  <img align="right" alt="GIF" width="350" src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExeWhqMTBpd29vZTltOXhrb2RpdHoycXd3cjgyaHhxbDRpc2RkZmgwNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/pbjzB6k2KNlvi/giphy.gif"/>
 
 |                 | Инструмент                                                                                            | Версия  |
 | --------------- | ----------------------------------------------------------------------------------------------------- | ------- |
