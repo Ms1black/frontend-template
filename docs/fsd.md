@@ -13,7 +13,7 @@
 ```
 app        ← может импортировать из всех слоёв
   ↓
-pages      ← может импортировать из widgets, features, entities, shared
+views      ← может импортировать из widgets, features, entities, shared
   ↓
 widgets    ← может импортировать из features, entities, shared
   ↓
@@ -81,12 +81,14 @@ widgets/
     └── index.ts
 ```
 
-### `pages` — страницы
+### `views` — страницы
 
 Композиция виджетов и фич для конкретного маршрута. Здесь минимум логики — только сборка.
 
+> В проекте слой называется `views` (не `pages`), чтобы избежать конфликта с Next.js Pages Router.
+
 ```
-pages/
+views/
 └── home/
     ├── ui/          # HomePage.tsx
     └── index.ts
@@ -140,7 +142,7 @@ import { Button } from '@shared/ui'
 import { UserCard } from '@entities/user'
 import { LoginForm } from '@features/auth'
 import { Header } from '@widgets/header'
-import { HomePage } from '@pages/home'
+import { HomePage } from '@views/home'
 ```
 
 Алиасы настроены в [`tsconfig.json`](../tsconfig.json) и подхватываются Next.js, Jest и Storybook автоматически.

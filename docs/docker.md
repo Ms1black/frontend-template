@@ -26,7 +26,7 @@ docker compose up --build
 - Next.js → [http://localhost:3000](http://localhost:3000)
 - Storybook → [http://localhost:6006](http://localhost:6006)
 
-Hot reload работает — исходники монтируются с хоста. `node_modules` и `.next` изолированы в анонимных volumes внутри контейнера `app` — не смешиваются с хостовыми артефактами.
+Hot reload работает через **Docker Compose Watch** — изменения в `src/` и `public/` автоматически синкаются в контейнер без пересборки. Изначальный снимок исходников попадает в образ через `COPY . .` в `Dockerfile.dev`.
 
 ### Запустить unit-тесты
 
@@ -42,7 +42,7 @@ Jest запускается с `CI=true` — выполняется один р�
 docker compose --profile e2e up e2e
 ```
 
-Playwright дожидается healthcheck сервиса `app` и только потом запускает тесты. Браузеры уже встроены в официальный образ. Исходники и `node_modules` монтируются напрямую с хоста.
+Playwright дожидается healthcheck сервиса `app` и только потом запускает тесты. Браузеры уже встроены в официальный образ.
 
 ### Запустить всё сразу
 

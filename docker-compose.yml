@@ -7,10 +7,6 @@ services:
       dockerfile: Dockerfile.dev
     ports:
       - "3000:3000"
-    volumes:
-      - .:/app
-      - /app/node_modules
-      - /app/.next
     environment:
       - NODE_ENV=development
       - NEXT_TELEMETRY_DISABLED=1
@@ -22,6 +18,17 @@ services:
       retries: 5
       start_period: 20s
     restart: unless-stopped
+    develop:
+      watch:
+        - path: ./src
+          target: /app/src
+          action: sync
+        - path: ./public
+          target: /app/public
+          action: sync
+        - path: ./package.json
+          target: /app/package.json
+          action: rebuild
 
   storybook:
     build:
@@ -29,22 +36,24 @@ services:
       dockerfile: Dockerfile.dev
     ports:
       - "6006:6006"
-    volumes:
-      - .:/app
-      - /app/node_modules
     environment:
       - NODE_ENV=development
       - NEXT_TELEMETRY_DISABLED=1
     command: pnpm storybook
     restart: unless-stopped
+    develop:
+      watch:
+        - path: ./src
+          target: /app/src
+          action: sync
+        - path: ./.storybook
+          target: /app/.storybook
+          action: sync
 
   test:
     build:
       context: .
       dockerfile: Dockerfile.dev
-    volumes:
-      - .:/app
-      - /app/node_modules
     environment:
       - NODE_ENV=test
       - CI=true
@@ -54,8 +63,6 @@ services:
   e2e:
     image: mcr.microsoft.com/playwright:v1.60.0-noble
     working_dir: /app
-    volumes:
-      - .:/app
     environment:
       - CI=true
       - PLAYWRIGHT_BASE_URL=http://app:3000

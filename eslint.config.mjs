@@ -23,13 +23,21 @@ export default tseslint.config(
   {
     languageOptions: {
       parserOptions: {
-        projectService: true,
+        projectService: {
+          allowDefaultProject: ['.storybook/*.ts'],
+        },
         tsconfigRootDir: __dirname,
       },
     },
     rules: {
       '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports' }],
       '@typescript-eslint/no-import-type-side-effects': 'error',
+    },
+  },
+  {
+    files: ['**/*.stories.tsx', '**/*.stories.ts'],
+    rules: {
+      '@next/next/no-img-element': 'off',
     },
   },
 )
